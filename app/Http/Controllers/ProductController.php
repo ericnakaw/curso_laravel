@@ -2,14 +2,16 @@
 
 namespace CodeProject\Http\Controllers;
 
-use CodeProject\Product;
+use CodeProject\Entities\Product;
+use CodeProject\Repositories\ProductRepository;
+use CodeProject\Repositories\ProductRepositoryEloquent;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(ProductRepository $repository)
     {
-        return Product::all();
+        return $repository->all();
     }
 
     public function store(Request $request)
